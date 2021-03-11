@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component, useEffect, useState} from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Keyboard } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 // export default function App() {
 //   return (
@@ -21,6 +22,8 @@ export default function App() {
   let [restMinutes, setRestMinutes] = useState('')
   let [restSeconds, setRestSeconds] = useState('')
 
+  let workColor = ['rgba(178, 82, 161, 1)', 'transparent']
+  let restColor = ['rgba(255, 255, 255, 1)', 'transparent']
 
   const secondsToText = () =>{
       let minutes = Math.floor(timeRemaining/60)
@@ -101,8 +104,13 @@ export default function App() {
   }
 
   return(
-      <View style={styles.container_work}>
-          <Text style={styles.title}>
+      <View style={workFlag ? styles.container_work : styles.container_rest}>
+        <LinearGradient
+        // Background Linear Gradient
+        colors={workFlag ? workColor : restColor}
+        style={styles.background}
+        />
+          <Text style={workFlag ? styles.titleWork : styles.titleRest}>
               {workFlag ? 'Work Timer' : 'Rest Timer'}
           </Text>
           <Text style={styles.timer}>
@@ -116,7 +124,7 @@ export default function App() {
               <Text style={{fontWeight: 'bold', paddingRight: 30}}>Work Time:</Text>
               <Text style={{paddingRight: 5}}>Mins:</Text>
               <TextInput
-                  style={{borderColor: 'gray', borderWidth: 1 }}
+                  style={styles.textBox}
                   onChangeText={text => handleWorkMinutesInput(text)}
                   value={workMinutes.toString()}
                   keyboardType='numeric'
@@ -124,7 +132,7 @@ export default function App() {
               />
               <Text style={{paddingRight: 5, paddingLeft:10}}>Secs:</Text>
               <TextInput
-                  style={{borderColor: 'gray', borderWidth: 1 }}
+                  style={styles.textBox}
                   onChangeText={text => handleWorkSecondsInput(text)}
                   value={workSeconds.toString()}
                   keyboardType='numeric'
@@ -135,7 +143,7 @@ export default function App() {
               <Text style={{fontWeight: 'bold', paddingRight: 30}}>Break Time:</Text>
               <Text style={{paddingRight: 5}}>Mins:</Text>
               <TextInput
-                  style={{borderColor: 'gray', borderWidth: 1 }}
+                  style={styles.textBox}
                   onChangeText={text => handleRestMinutesInput(text)}
                   value={restMinutes.toString()}
                   keyboardType='numeric'
@@ -143,13 +151,14 @@ export default function App() {
               />
               <Text style={{paddingRight: 5, paddingLeft:10}}>Secs:</Text>
               <TextInput
-                  style={{borderColor: 'gray', borderWidth: 1 }}
+                  style={styles.textBox}
                   onChangeText={text => handleRestSecondsInput(text)}
                   value={restSeconds.toString()}
                   keyboardType='numeric'
                   placeholder='0'
               />
           </View>
+        
       </View>
   )
 }
@@ -157,20 +166,25 @@ export default function App() {
 const styles = StyleSheet.create({
   container_work: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#dcd5d5',
     alignItems: 'center',
     justifyContent: 'center',
   },
   container_rest: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: 'orange',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
+  titleWork: {
     fontSize: 60,
     fontWeight: 'bold',
-    color: 'teal',
+    color: '#04dbc2',
+  },
+  titleRest: {
+    fontSize: 60,
+    fontWeight: 'bold',
+    color: '#f2734f',
   },
   timer: {
       fontSize: 80,
@@ -184,4 +198,16 @@ const styles = StyleSheet.create({
   button:{
       padding:50,
   },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 900,
+  },
+  textBox: {
+    borderColor: 'gray', 
+    borderWidth: 1,  
+    backgroundColor: 'white'
+  }
 });
