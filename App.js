@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component, useEffect, useState} from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Vibration } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
+// import {vibrate} from './utils'
 // export default function App() {
 //   return (
 //     <View style={styles.container}>
@@ -32,7 +32,7 @@ export default function App() {
   }
 
   const handleWorkMinutesInput = (text) => {
-      setWorkMinutes(text)
+      setWorkMinutes(workMinutes = text)
       // console.log(workMinutes)
       if (workFlag){
           resetTimer()
@@ -68,8 +68,9 @@ export default function App() {
               setTimer(secondsToText())
               // console.log(timeRemaining)
               // console.log('========')
-              if (timeRemaining <= 0){
+              if (timeRemaining < 0){
                   setWorkFlag(workFlag = !workFlag)
+                  Vibration.vibrate()
                   resetTimer()
               }
           },1000);
