@@ -1,12 +1,26 @@
-# Project 1 - Pomodoro Timer (CSULA)  
+# Project 1 - Pomodoro Timer (CSULA)
+
 For this project, you'll be implementing a Pomodoro timer. This timer will help
 people trying to use the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique).
 It will vibrate to tell you when to take breaks or resume working, based on some
 determined values. Check out the [staff solution](#staff-solution) for a working
 version.
 
+## Use
+
+Default timer is set to 2:00 minutes
+
+single variable tracks the current timer (time remaining),
+timeremaining is set when start timer clicked,
+timeremaining set to appropriate timer for section (work or rest)
+converts minutes and seconds into seconds (2:30 = 180s)
+
+timerdisplay takes timeremeaining and converts into minutes and seconds remaining.
+
+Text boxes are set to handle empty inputs as well as ignore non numericals
 
 ## Requirements
+
 - You may not import libraries other than the below:
   - `expo`
   - `react`
@@ -20,10 +34,8 @@ version.
 
 The aesthetics of the app is up to you! (Get creative)
 
-
-
-
 ## Getting Started
+
 First, head to [this link](https://docs.expo.io/versions/latest/introduction/installation.html)
 to install Expo. You'll need the XDE for your computer and the mobile client
 (Expo app) on your phone. If you prefer, you can also install the iOS simulator
@@ -64,14 +76,15 @@ You can now begin to work on your app. You may find the vibrate function in
 [`/utils`](/utils) helpful. Feel free to import and use it in your app like this:
 
 ```javascript
-import {vibrate} from './utils'
+import { vibrate } from "./utils";
 
 // causes phone to vibrate
-vibrate()
+vibrate();
 ```
 
 Good luck!
 
 ## Staff Solution
+
 If you want to play with the staff implementation, you can view it using
 Snack at [@jhhayashi/project1-solution](https://snack.expo.io/@jhhayashi/project1-solution).
