@@ -6,6 +6,12 @@ It will vibrate to tell you when to take breaks or resume working, based on some
 determined values. Check out the [staff solution](#staff-solution) for a working
 version.
 
+## Expo Link
+https://expo.io/@rmedina0531/assignment1
+
+## git repo
+https://github.com/rmedina0531/pomodoro-timer-app
+
 ## Use
 
 Default timer is set to 2:00 minutes
